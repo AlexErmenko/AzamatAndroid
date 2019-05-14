@@ -18,6 +18,13 @@
 		android:theme = "@style/AppTheme"
 		tools:ignore = "GoogleAppIndexingWarning"
 		>
+		<receiver
+			android:name = ".NetworkReceiver"
+			android:enabled = "true"
+			android:exported = "true"
+			>
+		</receiver>
+		
 		<activity android:name = ".SplashActivity">
 			<intent-filter>
 				<action android:name = "android.intent.action.MAIN" />

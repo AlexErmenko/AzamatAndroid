@@ -1,15 +1,17 @@
 package com.example.azamat
 
-import android.graphics.Color
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.CONNECTIVITY_ACTION
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import com.jjoe64.graphview.series.DataPoint
-import com.jjoe64.graphview.series.LineGraphSeries
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
-import org.jetbrains.anko.alert
 import org.jetbrains.anko.longToast
 import org.json.JSONArray
 import org.json.JSONObject
@@ -24,49 +26,68 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var mHandler: Handler
 	private lateinit var mRunnable: Runnable
 	
+	
+	private lateinit var receiver: BroadcastReceiver
+	
+	//Todo: Добавить широковещательное уведомление о появление интернета
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+		
+		var filter = IntentFilter(CONNECTIVITY_ACTION)
+		mRandom = Random()
+		mHandler = Handler()
 		listView.setOnItemClickListener { parent, view, position, id ->
 			longToast("Hello from ${id} and $position")
 		}
 	}
 	
 	
+	private fun checkInternet(): Boolean? {
+		val manager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+		val info: NetworkInfo? = manager.activeNetworkInfo
+		return info?.isConnected
+	}
 	
 	override fun onStart() {
 		super.onStart()
-		mRandom = Random()
-		mHandler = Handler()
+		val internet = checkInternet()
 		
 		swipeLayout.setOnRefreshListener {
-			// Initialize a new Runnable
-			mRunnable = Runnable {
-				GlobalScope.launch(Dispatchers.IO,CoroutineStart.UNDISPATCHED) {
-					val answer = parceJson(URL_API)
-					var list  = iterateJsonArray(answer)
-					withContext(Dispatchers.Main) {
-						listView.adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1,list)
+			internet?.let {
+				if (internet) {
+					mRunnable = Runnable {
+						GlobalScope.launch(Dispatchers.IO, CoroutineStart.UNDISPATCHED) {
+							val answer = parceJson(URL_API)
+							val list = iterateJsonArray(answer)
+							withContext(Dispatchers.Main) {
+								listView.adapter = ArrayAdapter(
+									this@MainActivity,
+									android.R.layout.simple_list_item_1,
+									list
+								)
+							}
+						}
+						swipeLayout.isRefreshing = false
 					}
+					mHandler.postDelayed(
+						mRunnable,
+						(randomInRange(1, 4) * 1000).toLong() // Delay 1 to 5 seconds
+					)
 				}
-				swipeLayout.isRefreshing = false
 			}
-			mHandler.postDelayed(
-				mRunnable,
-				(randomInRange(3, 5) * 1000).toLong() // Delay 1 to 5 seconds
-			)
 		}
 		
-		
 	}
+	
 	private fun iterateJsonArray(
 		str: String
-	):MutableList<Int>{
+	): MutableList<Int> {
 		
 		val jsonArr = JSONArray(str)
 		
-		return  mutableListOf<Int>().apply{
-			for (i in jsonArr){
+		return mutableListOf<Int>().apply {
+			for (i in jsonArr) {
 				val id = i["id"] as Int
 				this.add(id)
 			}
@@ -84,20 +105,15 @@ class MainActivity : AppCompatActivity() {
 		}.iterator()
 	
 	
-	
-	// Custom method to generate random HSV color
-	fun randomHSVColor(): Int {
-		// Generate a random hue value between 0 to 360
-		val hue = mRandom.nextInt(361)
-		// We make the color depth full
-		val saturation = 1.0f
-		// We make a full bright color
-		val value = 1.0f
-		// We avoid color transparency
-		val alpha = 255
-		// Finally, generate the color
-		// Return the color
-		return Color.HSVToColor(alpha, floatArrayOf(hue.toFloat(), saturation, value))
+	companion object{
+		const val WIFI = "Wi-Fi"
+		const val ANY = "Any"
+		
+		
+		private var wifiConnection = false
+		private var mobileConnected = false
+		var refreshDisplay = true
+		
 	}
 	
 	// Custom method to get a random number from the provided range
