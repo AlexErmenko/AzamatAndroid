@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	tools:context = ".UI.Fragments.ChartFragment"
+	android:orientation="horizontal"
+	
+	>
+	
+	<com.joe64.graphview.GraphView
+		android:id="@+id/mainGraphView"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		/>
+	<com.joe64.graphview.GraphView
+		android:id="@+id/graphView"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		/>
+</FrameLayout>

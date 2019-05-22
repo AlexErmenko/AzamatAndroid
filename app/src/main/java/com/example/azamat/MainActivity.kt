@@ -1,128 +1,150 @@
 package com.example.azamat
 
-import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Context.*
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
-import org.jetbrains.anko.longToast
+import org.jetbrains.anko.UI
+import org.jetbrains.anko.coroutines.experimental.bg
+import org.jetbrains.anko.custom.async
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
-import java.util.*
+import kotlin.math.log
 
 const val URL_API = "http://api.kgemt.org.ua/sunflower/v1/data"
 
-
 class MainActivity : AppCompatActivity() {
-	private lateinit var mRandom: Random
+	
 	private lateinit var mHandler: Handler
-	private lateinit var mRunnable: Runnable
+	private lateinit var receiver: NetworkReceiver
 	
+	private val scope = CoroutineScope(newSingleThreadContext("Background"))
 	
-	private lateinit var receiver: BroadcastReceiver
-	
-	//Todo: Добавить широковещательное уведомление о появление интернета
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		
-		var filter = IntentFilter(CONNECTIVITY_ACTION)
-		mRandom = Random()
-		mHandler = Handler()
+//		var filter = IntentFilter(CONNECTIVITY_ACTION)
+//		receiver = NetworkReceiver()
+//		this.registerReceiver(receiver, filter)
+		
+//		mHandler = Handler()
+		
+		
 		listView.setOnItemClickListener { parent, view, position, id ->
-			longToast("Hello from ${id} and $position")
+			toast("Hello $position")
 		}
-	}
-	
-	
-	private fun checkInternet(): Boolean? {
-		val manager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-		val info: NetworkInfo? = manager.activeNetworkInfo
-		return info?.isConnected
-	}
-	
-	override fun onStart() {
-		super.onStart()
-		val internet = checkInternet()
+		
+		scope.launch {
+			val list = loadList()
+			withContext(Dispatchers.Main) {
+				listView.adapter =
+					ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, list)
+			}
+		}
+		
+		
 		
 		swipeLayout.setOnRefreshListener {
-			internet?.let {
-				if (internet) {
-					mRunnable = Runnable {
-						GlobalScope.launch(Dispatchers.IO, CoroutineStart.UNDISPATCHED) {
-							val answer = parceJson(URL_API)
-							val list = iterateJsonArray(answer)
-							withContext(Dispatchers.Main) {
-								listView.adapter = ArrayAdapter(
-									this@MainActivity,
-									android.R.layout.simple_list_item_1,
-									list
-								)
-							}
-						}
-						swipeLayout.isRefreshing = false
+			updateConnected()
+			if (refreshDisplay) {
+				scope.launch{
+					
+					val list = loadList()
+					withContext(Dispatchers.Main) {
+						listView.adapter =
+							ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, list)
 					}
-					mHandler.postDelayed(
-						mRunnable,
-						(randomInRange(1, 4) * 1000).toLong() // Delay 1 to 5 seconds
-					)
 				}
 			}
+			swipeLayout.isRefreshing = false
 		}
-		
 	}
 	
-	private fun iterateJsonArray(
-		str: String
-	): MutableList<Int> {
-		
-		val jsonArr = JSONArray(str)
-		
-		return mutableListOf<Int>().apply {
-			for (i in jsonArr) {
-				val id = i["id"] as Int
-				this.add(id)
+	
+	//Отписываю NetworkReceiver
+	override fun onDestroy() {
+		super.onDestroy()
+//		this.unregisterReceiver(receiver)
+	}
+	
+	
+	//Получаю текущее состояние интернет соеденения
+	private fun updateConnected() {
+		val manager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+		val info: NetworkInfo? = manager.activeNetworkInfo
+		when (info?.isConnected) {
+			true  -> {
+				wifiConnection = true
+				mobileConnected = true
+			}
+			false -> {
+				wifiConnection = false
+				mobileConnected = false
 			}
 		}
 	}
 	
-	private suspend fun parceJson(urlApi: String) =
-		withContext(Dispatchers.Default) {
-			URL(urlApi).readText()
-		}
+	// Парсю JSON и формирую список для Adapter
+	private suspend fun loadList(): MutableList<String> = withContext(Dispatchers.IO) {
+		val body = parceJson(URL_API)
+		convertJsonToList(body)
+	}
 	
+	//Итерируюсь по JSONArray и формирую List из значений обьектов
+	private suspend fun convertJsonToList(
+		body: String
+	): MutableList<String> = withContext(Dispatchers.IO) {
+		
+		val jsonArr = JSONArray(body)
+		val last = jsonArr[jsonArr.length() - 1] as JSONObject
+		
+		val list = mutableListOf<String>().apply {
+			val id = last["id"] as Int
+			var h = last["humidity"] as Int
+			val t = last["temperature"] as Int
+			val il = last["illumination"] as Int
+//			val sm = last["smoke"] as Int
+			with(resources) {
+				this@apply.add("${getString(R.string.illumination)} $il lux")
+				this@apply.add("${getString(R.string.temperature)} $t C°")
+				this@apply.add("${getString(R.string.humidity)} $h  (г/м³)")
+				
+				//TODO: Реализовать датчик качества воздуха!
+//				this@apply.add("${getString(R.string.smoke)} $sm (?)")
+			}
+		}
+		list
+	}
+	
+	//Парсисю JSON
+	private suspend fun parceJson(urlApi: String): String = withContext(Dispatchers.IO) {
+		URL(urlApi).readText()
+	}
+	
+	// Добавление iterator для JSONArray
 	operator fun JSONArray.iterator(): Iterator<JSONObject> =
 		(0 until length()).asSequence().map {
 			get(it) as JSONObject
 		}.iterator()
 	
-	
-	companion object{
-		const val WIFI = "Wi-Fi"
-		const val ANY = "Any"
-		
-		
+	//Состояния подключения к интернету
+	companion object {
 		private var wifiConnection = false
 		private var mobileConnected = false
-		var refreshDisplay = true
-		
-	}
-	
-	// Custom method to get a random number from the provided range
-	private fun randomInRange(min: Int, max: Int): Int {
-		// Define a new Random class
-		val r = Random()
-		
-		// Get the next random number within range
-		// Including both minimum and maximum number
-		return r.nextInt((max - min) + 1) + min;
+		val refreshDisplay = true
 	}
 }
