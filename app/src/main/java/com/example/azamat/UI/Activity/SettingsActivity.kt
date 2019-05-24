@@ -17,6 +17,7 @@ class SettingsActivity : AppCompatActivity() {
 		supportActionBar?.setDisplayHomeAsUpEnabled(true)
 	}
 	
+	//Фрагмент с настройками для приложения
 	class SettingsFragment : PreferenceFragmentCompat() {
 		override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
 			setPreferencesFromResource(R.xml.root_preferences, rootKey)

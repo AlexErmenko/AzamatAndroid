@@ -19,6 +19,18 @@
 		android:theme = "@style/AppTheme"
 		tools:ignore = "GoogleAppIndexingWarning"
 		>
+		<activity
+			android:name = ".UI.Activity.SliderActivity"
+			android:label = "@string/title_activity_slider"
+			android:theme = "@style/AppTheme.NoActionBar"
+			>
+		</activity>
+		<activity
+			android:name = ".ui.login.LoginActivity"
+			android:label = "@string/title_activity_login"
+			>
+		</activity>
+		
 		<receiver
 			android:name = ".SystemServices.NetworkReceiver"
 			android:enabled = "true"
