@@ -1,30 +1,28 @@
 package com.example.azamat
 
 import android.content.Context
-import android.content.Context.*
-import android.content.IntentFilter
 import android.net.ConnectivityManager
-import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.azamat.SystemServices.NetworkReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
-import org.jetbrains.anko.UI
-import org.jetbrains.anko.coroutines.experimental.bg
-import org.jetbrains.anko.custom.async
-import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
-import kotlin.math.log
 
 const val URL_API = "http://api.kgemt.org.ua/sunflower/v1/data"
+
+// TODO: Сделать слайдер при загрузке в 1й раз
+// TODO: Поменять логин на сканирование QR кода
+// TODO: Дописать реализацю построения графика в реальном времени
+// TODO: Сделать загрузочный экран при старте приложения
+// TODO: Доделать работу с API
+
 
 class MainActivity : AppCompatActivity() {
 	
@@ -72,13 +70,6 @@ class MainActivity : AppCompatActivity() {
 			}
 			swipeLayout.isRefreshing = false
 		}
-	}
-	
-	
-	//Отписываю NetworkReceiver
-	override fun onDestroy() {
-		super.onDestroy()
-//		this.unregisterReceiver(receiver)
 	}
 	
 	
