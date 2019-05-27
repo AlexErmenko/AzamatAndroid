@@ -27,6 +27,7 @@ import java.util.*
 
 const val count = 30
 
+// TODO: Дописать реализацю построения графика в реальном времени
 class ChartFragment : Fragment() {
 	
 	val handler = Handler()

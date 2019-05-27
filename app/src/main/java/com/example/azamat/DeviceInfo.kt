@@ -1,7 +1,6 @@
 package com.example.azamat
 
 import com.beust.klaxon.Json
-import java.util.*
 
 data class DeviceInfo(
 	val id: Int,

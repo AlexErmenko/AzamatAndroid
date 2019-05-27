@@ -8,7 +8,7 @@ import android.os.Handler
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.azamat.SystemServices.NetworkReceiver
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main_example.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.toast
 import org.json.JSONArray
@@ -17,14 +17,14 @@ import java.net.URL
 
 const val URL_API = "http://api.kgemt.org.ua/sunflower/v1/data"
 
-// TODO: Сделать слайдер при загрузке в 1й раз
+
 // TODO: Поменять логин на сканирование QR кода
-// TODO: Дописать реализацю построения графика в реальном времени
-// TODO: Сделать загрузочный экран при старте приложения
+
+
 // TODO: Доделать работу с API
 
 
-class MainActivity : AppCompatActivity() {
+class ExampleMainActivity : AppCompatActivity() {
 	
 	private lateinit var mHandler: Handler
 	private lateinit var receiver: NetworkReceiver
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+		setContentView(R.layout.activity_main_example)
 		
 //		var filter = IntentFilter(CONNECTIVITY_ACTION)
 //		receiver = NetworkReceiver()
@@ -50,7 +50,11 @@ class MainActivity : AppCompatActivity() {
 			val list = loadList()
 			withContext(Dispatchers.Main) {
 				listView.adapter =
-					ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, list)
+					ArrayAdapter(
+						this@ExampleMainActivity,
+						android.R.layout.simple_list_item_1,
+						list
+					)
 			}
 		}
 		
@@ -64,7 +68,11 @@ class MainActivity : AppCompatActivity() {
 					val list = loadList()
 					withContext(Dispatchers.Main) {
 						listView.adapter =
-							ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, list)
+							ArrayAdapter(
+								this@ExampleMainActivity,
+								android.R.layout.simple_list_item_1,
+								list
+							)
 					}
 				}
 			}

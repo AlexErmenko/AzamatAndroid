@@ -1,4 +1,4 @@
-package com.example.azamat.UI.Activity.ui.login
+package com.example.azamat.UI.Activity.login
 
 import android.app.Activity
 import android.os.Bundle
@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.azamat.R
+import com.example.azamat.UI.Activity.ui.login.LoggedInUserView
+import com.example.azamat.UI.Activity.ui.login.LoginViewModel
+import com.example.azamat.UI.Activity.ui.login.LoginViewModelFactory
 
 
 class LoginActivity : AppCompatActivity() {

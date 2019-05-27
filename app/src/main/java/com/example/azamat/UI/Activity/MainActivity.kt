@@ -13,7 +13,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.azamat.R
 import com.google.android.material.navigation.NavigationView
 
-class SliderActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity() {
 	
 	//Конфигуратор для навигации
 	private lateinit var appBarConfiguration: AppBarConfiguration

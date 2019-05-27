@@ -1,53 +1,52 @@
 package com.example.azamat
 
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
 import com.example.azamat.SystemServices.NetworkReceiver
-import kotlinx.coroutines.*
-import kotlinx.coroutines.CoroutineStart.UNDISPATCHED
+import com.example.azamat.UI.Activity.MainActivity
+import org.jetbrains.anko.intentFor
 
-class SplashActivity : AppCompatActivity() {
-	
-	
+
+const val PreferencesName = "Azamat"
+
+// TODO: Сделать загрузочный экран при старте приложения
+class PreloaderActivity : AppCompatActivity() {
 	
 	lateinit var receiver: NetworkReceiver
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_splash)
+		setContentView(R.layout.activity_preloadr)
+		val sharedPreferences = getSharedPreferences(PreferencesName, Context.MODE_PRIVATE)
 		
-		val filter =IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+		if (sharedPreferences.getBoolean("FirstStart", false)) intentFor<ExampleMainActivity>()
+		else intentFor<MainActivity>()
+		
+		/*val filter =IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
 		receiver = NetworkReceiver()
-		this.registerReceiver(receiver, filter)
-		
-		
-		
-		GlobalScope.launch(Dispatchers.IO, UNDISPATCHED) {
+		this.registerReceiver(receiver, filter)*/
+		/*GlobalScope.launch(Dispatchers.IO, UNDISPATCHED) {
 			delay(1000)
 			val hasInternet = isOnline()
 			hasInternet.let {
 				withContext(Dispatchers.Main) {
 					if (hasInternet) startActivity(
 						Intent(
-							this@SplashActivity,
-							MainActivity::class.java
+							this@PreloaderActivity,
+							ExampleMainActivity::class.java
 						)
 					)
 					else Toast.makeText(
-						this@SplashActivity,
+						this@PreloaderActivity,
 						"Відсутнє інтернет з'єднання!",
 						Toast.LENGTH_LONG
 					).show()
 				}
 				
 			}
-		}
+		}*/
 	}
 	private fun isOnline(): Boolean {
 		val connMgr = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -67,6 +66,8 @@ class SplashActivity : AppCompatActivity() {
 			
 		}
 	}
+	
+	
 	override fun onDestroy() {
 		super.onDestroy()
 		this.unregisterReceiver(receiver)

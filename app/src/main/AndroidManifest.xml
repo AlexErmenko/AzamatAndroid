@@ -9,6 +9,7 @@
 	<uses-permission android:name = "android.permission.INTERNET" />
 	<uses-permission android:name = "android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name = "android.permission.CAMERA" />
 	
 	<application
 		android:allowBackup = "true"
@@ -19,14 +20,16 @@
 		android:theme = "@style/AppTheme"
 		tools:ignore = "GoogleAppIndexingWarning"
 		>
+		<activity android:name = ".UI.Activity.Splash.SliderActivity">
+		</activity>
 		<activity
-			android:name = ".UI.Activity.SliderActivity"
+			android:name = ".UI.Activity.MainActivity"
 			android:label = "@string/title_activity_slider"
 			android:theme = "@style/AppTheme.NoActionBar"
 			>
 		</activity>
 		<activity
-			android:name = ".ui.login.LoginActivity"
+			android:name = ".UI.Activity.login.LoginActivity"
 			android:label = "@string/title_activity_login"
 			>
 		</activity>
@@ -45,13 +48,13 @@
 		</activity>
 		
 		<receiver
-			android:name = ".NetworkReceiver"
+			android:name = ".SystemServices.NetworkReceiver"
 			android:enabled = "true"
 			android:exported = "true"
 			>
 		</receiver>
 		
-		<activity android:name = ".SplashActivity">
+		<activity android:name = ".PreloaderActivity">
 			
 			<!--
             <intent-filter>
@@ -61,7 +64,7 @@
 			</intent-filter>
             -->
 		</activity>
-		<activity android:name = ".MainActivity">
+		<activity android:name = ".ExampleMainActivity">
 			<intent-filter>
 				<action android:name = "android.intent.action.MAIN" />
 				
