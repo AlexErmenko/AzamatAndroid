@@ -11,4 +11,20 @@
 		android:label = "fragment_splash"
 		tools:layout = "@layout/fragment_splash"
 		/>
+	<fragment
+		android:id = "@+id/galleryFragment"
+		android:name = "com.example.azamat.UI.Activity.ui.gallery.GalleryFragment"
+		android:label = "GalleryFragment"
+		/>
+	<activity
+		android:id = "@+id/mainActivity"
+		android:name = "com.example.azamat.UI.Activity.MainActivity"
+		android:label = "app_bar_slider"
+		tools:layout = "@layout/app_bar_slider"
+		/>
+	<activity
+		android:id = "@+id/settingsActivity"
+		android:name = "com.example.azamat.UI.Activity.SettingsActivity"
+		android:label = "SettingsActivity"
+		/>
 </navigation>
