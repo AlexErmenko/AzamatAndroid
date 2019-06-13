@@ -9,6 +9,7 @@
 		android:name = "com.google.android.gms.version"
 		android:value = "@integer/google_play_services_version"
 		/>
+	
 	<uses-permission android:name = "android.permission.VIBRATE" />
 	<uses-permission android:name = "android.permission.INTERNET" />
 	<uses-permission android:name = "android.permission.ACCESS_WIFI_STATE" />
@@ -24,19 +25,21 @@
 		android:theme = "@style/AppTheme"
 		tools:ignore = "GoogleAppIndexingWarning"
 		>
-		<activity android:name = ".UI.Activity.Splash.SliderActivity">
-		</activity>
+		
 		<activity
-			android:name = ".UI.Activity.MainActivity"
+			android:name = ".ui.onboarding.BenefitActivity"
+			android:label = "@string/title_activity_benefit"
+			android:theme = "@style/AppTheme.NoActionBar"
+			>
+		</activity>
+		
+		
+		<activity
+			android:name = ".ui.main.MainActivity"
 			android:label = "@string/title_activity_slider"
 			android:theme = "@style/AppTheme.NoActionBar"
 			>
 		</activity>
-		<activity
-			android:name = ".UI.Activity.login.LoginActivity"
-			android:label = "@string/title_activity_login"
-			>
-		</activity>
 		
 		<receiver
 			android:name = ".SystemServices.NetworkReceiver"
@@ -46,19 +49,13 @@
 		</receiver>
 		
 		<activity
-			android:name = ".UI.Activity.SettingsActivity"
+			android:name = ".ui.settings.SettingsActivity"
 			android:label = "@string/title_activity_settings"
 			>
 		</activity>
 		
-		<receiver
-			android:name = ".SystemServices.NetworkReceiver"
-			android:enabled = "true"
-			android:exported = "true"
-			>
-		</receiver>
 		
-		<activity android:name = ".PreloaderActivity">
+		<activity android:name = ".ui.preloader.PreloaderActivity">
 			
 			<!--
             <intent-filter>

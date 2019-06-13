@@ -34,11 +34,11 @@ class ExampleMainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main_example)
-		
+
 //		var filter = IntentFilter(CONNECTIVITY_ACTION)
 //		receiver = NetworkReceiver()
 //		this.registerReceiver(receiver, filter)
-		
+
 //		mHandler = Handler()
 		
 		
@@ -63,7 +63,7 @@ class ExampleMainActivity : AppCompatActivity() {
 		swipeLayout.setOnRefreshListener {
 			updateConnected()
 			if (refreshDisplay) {
-				scope.launch{
+				scope.launch {
 					
 					val list = loadList()
 					withContext(Dispatchers.Main) {
@@ -118,9 +118,9 @@ class ExampleMainActivity : AppCompatActivity() {
 			val il = last["illumination"] as Int
 //			val sm = last["smoke"] as Int
 			with(resources) {
-				this@apply.add("${getString(R.string.illumination)} $il lux")
-				this@apply.add("${getString(R.string.temperature)} $t C°")
-				this@apply.add("${getString(R.string.humidity)} $h  (г/м³)")
+				//				this@apply.add("${getString(R.string.illumination)} $il lux")
+//				this@apply.add("${getString(R.string.temperature)} $t C°")
+//				this@apply.add("${getString(R.string.humidity)} $h  (г/м³)")
 				
 				//TODO: Реализовать датчик качества воздуха!
 //				this@apply.add("${getString(R.string.smoke)} $sm (?)")
