@@ -8,9 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.azamat.R
 
+/**
+ *
+ *
+ */
 class AboutDeveloperFragment : Fragment() {
 	
 	companion object {
+		/**
+		 *
+		 */
 		fun newInstance() = AboutDeveloperFragment()
 	}
 	

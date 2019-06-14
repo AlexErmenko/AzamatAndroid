@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity
-data class Info(
+data class InfoEntity(
 	@PrimaryKey
 	@ColumnInfo(name = "ID")
 	var id: Int,
