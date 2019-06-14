@@ -1,4 +1,4 @@
-package com.example.azamat.Fragments
+package com.example.azamat.ui.diagrams
 
 import android.os.Bundle
 import android.os.Handler

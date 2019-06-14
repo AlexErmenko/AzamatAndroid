@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.azamat.ExampleMainActivity
 import com.example.azamat.R
-import com.example.azamat.SystemServices.NetworkReceiver
+import com.example.azamat.services.NetworkReceiver
 import com.example.azamat.ui.main.MainActivity
 import org.jetbrains.anko.intentFor
 

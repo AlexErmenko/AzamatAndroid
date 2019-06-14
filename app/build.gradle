@@ -41,7 +41,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    implementation 'androidx.core:core-ktx:1.2.0-alpha01'
+    implementation 'androidx.core:core-ktx:1.2.0-alpha02'
     implementation 'com.google.android.material:material:1.1.0-alpha07'
 
     //Navigation graph
@@ -75,7 +75,8 @@ dependencies {
 
 
 // Google Drive
-//TODO: Append lib for auth
+
+    //TODO: Append lib for auth
     implementation "com.google.android.gms:play-services-drive:$play_services_version"
 
     implementation 'com.squareup.okio:okio:2.2.2'

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import com.example.azamat.SystemServices.NetworkReceiver
+import com.example.azamat.services.NetworkReceiver
 import kotlinx.android.synthetic.main.activity_main_example.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.toast
