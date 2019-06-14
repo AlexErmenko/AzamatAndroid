@@ -1,3 +1,4 @@
+/*
 package com.example.azamat
 
 import android.app.Application
@@ -20,3 +21,4 @@ class BasicApp : Application() {
 		appExecutor = AppExecutor()
 	}
 }
+*/

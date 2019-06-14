@@ -44,7 +44,7 @@ abstract class AppDatabase : RoomDatabase() {
 		@Volatile
 		private var INSTANCE: AppDatabase? = null
 		
-		fun getInstance(context: Context, executor: AppExecutor): AppDatabase {
+		fun getInstance(context: Context, executor: AppExecutor): AppDatabase? {
 			if (INSTANCE == null) {
 				synchronized(AppDatabase::class.java) {
 					if (INSTANCE == null) {
