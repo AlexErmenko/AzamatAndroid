@@ -13,10 +13,7 @@ import com.example.azamat.db.dao.InfoDao
 
 @Database(entities = [IDNA.Info::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-	
-	
 	private val IsDatabaseCreated = MutableLiveData<Boolean>()
-	
 	
 	val databaseCreated: LiveData<Boolean>
 		get() = IsDatabaseCreated
@@ -32,13 +29,11 @@ abstract class AppDatabase : RoomDatabase() {
 	}
 	
 	
-	
 	abstract fun infoDao(): InfoDao
 	
 	companion object {
 		@VisibleForTesting
 		val DATABASE_NAME = "AzamatDatabase"
-		
 		
 		
 		@Volatile
@@ -55,7 +50,7 @@ abstract class AppDatabase : RoomDatabase() {
 				
 			}
 			return INSTANCE
-			}
+		}
 		
 		private fun buildDatabase(context: Context, executor: AppExecutor) =
 			Room.databaseBuilder(

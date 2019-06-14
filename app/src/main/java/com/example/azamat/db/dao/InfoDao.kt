@@ -34,8 +34,5 @@ interface InfoDao {
 	
 	@Query("SELECT * FROM INFOENTITY")
 	fun loadAllInfo(): LiveData<List<InfoEntity>>
-
-//	@Query(OnConflictStrategy = OnConflictStrategy.REPLACE, "INSERT :info  ")
-//	fun insertInfo(info: Info)
 	
 }

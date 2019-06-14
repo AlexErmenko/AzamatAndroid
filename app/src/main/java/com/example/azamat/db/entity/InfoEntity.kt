@@ -4,7 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
+/**
+ * @param id
+ * @param name
+ * @param value
+ * */
 @Entity
 data class InfoEntity(
 	@PrimaryKey

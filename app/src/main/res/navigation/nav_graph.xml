@@ -39,4 +39,15 @@
 		android:label = "chart_fragment"
 		tools:layout = "@layout/chart_fragment"
 		/>
+	<fragment
+		android:id = "@+id/settingsFragment"
+		android:name = "com.example.azamat.ui.settings.SettingsActivity.SettingsFragment"
+		android:label = "SettingsFragment"
+		/>
+	<fragment
+		android:id = "@+id/userHelpFragment"
+		android:name = "com.example.azamat.ui.help.UserHelpFragment"
+		android:label = "user_help_fragment"
+		tools:layout = "@layout/user_help_fragment"
+		/>
 </navigation>
