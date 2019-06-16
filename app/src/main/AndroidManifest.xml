@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
 	xmlns:android = "http://schemas.android.com/apk/res/android"
-	xmlns:tools = "http://schemas.android.com/tools"
 	package = "com.example.azamat"
 	>
 	
-	<meta-data
+	<!--<meta-data
 		android:name = "com.google.android.gms.version"
 		android:value = "@integer/google_play_services_version"
-		/>
+		/>-->
 	
 	<uses-permission android:name = "android.permission.VIBRATE" />
 	<uses-permission android:name = "android.permission.INTERNET" />
 	<uses-permission android:name = "android.permission.ACCESS_WIFI_STATE" />
+	
 	<uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name = "android.permission.CAMERA" />
 	
@@ -22,14 +22,20 @@
 		android:roundIcon = "@mipmap/ic_launcher_round"
 		android:supportsRtl = "true"
 		android:theme = "@style/AppTheme"
-		tools:ignore = "GoogleAppIndexingWarning"
+		android:allowBackup = "true"
+		
 		>
 		
 		<activity
 			android:name = ".ui.onboarding.BenefitActivity"
 			android:label = "@string/title_activity_benefit"
-			android:theme = "@style/AppTheme.NoActionBar"
+			
 			>
+			<intent-filter>
+				<action android:name = "android.intent.action.MAIN" />
+				
+				<category android:name = "android.intent.category.LAUNCHER" />
+			</intent-filter>
 		</activity>
 		
 		
@@ -49,7 +55,6 @@
 		
 		<activity
 			android:name = ".ui.settings.SettingsActivity"
-			android:label = "@string/title_activity_settings"
 			>
 		</activity>
 		
@@ -65,11 +70,7 @@
             -->
 		</activity>
 		<activity android:name = ".ExampleMainActivity">
-			<intent-filter>
-				<action android:name = "android.intent.action.MAIN" />
-				
-				<category android:name = "android.intent.category.LAUNCHER" />
-			</intent-filter>
+		
 		</activity>
 	</application>
 

@@ -1,7 +1,6 @@
 package com.example.azamat.db
 
 import android.content.Context
-import android.icu.text.IDNA
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,10 +8,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.azamat.AppExecutor
-import com.example.azamat.db.dao.InfoDao
+import com.example.azamat.db.dao.DeviceInfoDao
+import com.example.azamat.db.entity.DeviceInfo
 
-@Database(entities = [IDNA.Info::class], version = 1)
+@Database(entities = [DeviceInfo::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+	
 	private val IsDatabaseCreated = MutableLiveData<Boolean>()
 	
 	val databaseCreated: LiveData<Boolean>
@@ -29,7 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
 	}
 	
 	
-	abstract fun infoDao(): InfoDao
+	abstract fun infoDao(): DeviceInfoDao
 	
 	companion object {
 		@VisibleForTesting

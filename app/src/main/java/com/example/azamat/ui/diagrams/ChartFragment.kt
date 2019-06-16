@@ -1,3 +1,4 @@
+/*
 package com.example.azamat.ui.diagrams
 
 import android.os.Bundle
@@ -7,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.beust.klaxon.Klaxon
-import com.example.azamat.DeviceInfo
+import com.example.azamat.db.entity.DeviceInfo
 import com.example.azamat.R
 import com.example.azamat.R.layout
 import com.example.azamat.URL_API
@@ -21,9 +22,11 @@ import java.net.URL
 import java.util.*
 
 
+*/
 /**
  * A simple [Fragment] subclass.
- */
+ *//*
+
 
 const val count = 30
 
@@ -126,3 +129,4 @@ class ChartFragment : Fragment() {
 
 
 
+*/

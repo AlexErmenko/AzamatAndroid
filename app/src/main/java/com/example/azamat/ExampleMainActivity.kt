@@ -5,12 +5,12 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.azamat.services.NetworkReceiver
-import kotlinx.android.synthetic.main.activity_main_example.*
-import kotlinx.coroutines.*
-import org.jetbrains.anko.toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
@@ -33,34 +33,33 @@ class ExampleMainActivity : AppCompatActivity() {
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main_example)
+		setContentView(R.layout.activity_main)
 
 //		var filter = IntentFilter(CONNECTIVITY_ACTION)
 //		receiver = NetworkReceiver()
 //		this.registerReceiver(receiver, filter)
 
 //		mHandler = Handler()
+
+
+//		listView.setOnItemClickListener { parent, view, position, id ->
+//			toast("Hello $position")
+//		}
+//
+//		scope.launch {
+//			val list = loadList()
+//			withContext(Dispatchers.Main) {
+//				listView.adapter =
+//					ArrayAdapter(
+//						this@ExampleMainActivity,
+//						android.R.layout.simple_list_item_1,
+//						list
+//					)
+//			}
+//		}
 		
 		
-		listView.setOnItemClickListener { parent, view, position, id ->
-			toast("Hello $position")
-		}
-		
-		scope.launch {
-			val list = loadList()
-			withContext(Dispatchers.Main) {
-				listView.adapter =
-					ArrayAdapter(
-						this@ExampleMainActivity,
-						android.R.layout.simple_list_item_1,
-						list
-					)
-			}
-		}
-		
-		
-		
-		swipeLayout.setOnRefreshListener {
+		/*₴		swipeLayout.setOnRefreshListener {''
 			updateConnected()
 			if (refreshDisplay) {
 				scope.launch {
@@ -77,7 +76,7 @@ class ExampleMainActivity : AppCompatActivity() {
 				}
 			}
 			swipeLayout.isRefreshing = false
-		}
+		}*/
 	}
 	
 	

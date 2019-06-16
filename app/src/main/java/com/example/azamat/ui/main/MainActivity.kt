@@ -1,57 +1,52 @@
 package com.example.azamat.ui.main
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.azamat.R
+import com.example.azamat.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-
 
 class MainActivity : AppCompatActivity() {
 	
 	private lateinit var appBarConfiguration: AppBarConfiguration
+	private lateinit var drawerLayout: DrawerLayout
+	private lateinit var navView: NavigationView
+	private lateinit var navController: NavController
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_slider)
 		
-		val toolbar: Toolbar = findViewById(R.id.toolbar)
-		setSupportActionBar(toolbar)
+		val binding: ActivityMainBinding = setContentView(this, R.layout.activity_main)
+		drawerLayout = binding.drawerLayout
+		navView = binding.navigationView
+		navController = Navigation.findNavController(this, R.id.hostFragment)
 		
+		appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 		
-		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-		val navView: NavigationView = findViewById(R.id.nav_view)
-		
-		val navController = findNavController(R.id.hostFragment)
-		
-		// Passing each menu ID as a set of Ids because each
-		// menu should be considered as top level destinations.
-		appBarConfiguration = AppBarConfiguration(
-			setOf(
-				R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-				R.id.nav_tools, R.id.nav_share, R.id.nav_send
-			), drawerLayout
-		)
-		
+		setSupportActionBar(binding.toolbar)
 		setupActionBarWithNavController(navController, appBarConfiguration)
-		navView.setupWithNavController(navController)
-	}
-	
-	override fun onCreateOptionsMenu(menu: Menu): Boolean {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		menuInflater.inflate(R.menu.slider, menu)
-		return true
+		binding.navigationView.setupWithNavController(navController)
 	}
 	
 	override fun onSupportNavigateUp(): Boolean {
 		val navController = findNavController(R.id.hostFragment)
 		return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 	}
+	
+	override fun onBackPressed(): Unit = when {
+		drawerLayout.isDrawerOpen(GravityCompat.START) -> drawerLayout.closeDrawer(GravityCompat.START)
+		else                                           -> super.onBackPressed()
+	}
+	
+	
 }

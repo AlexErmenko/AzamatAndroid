@@ -2,7 +2,9 @@
 	<string name = "app_name">Azamat</string>
 	
 	<!-- TODO: remove this placeholder text -->
-	
+	<string name = "dots_indicator">DotsIndicator</string>
+	<string name = "spring_dots_indicator">SpringDotsIndicator</string>
+	<string name = "worm_dots_indicator">WormDotsIndicator</string>
 	
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name = "hello_blank_fragment">Hello blank fragment</string>
