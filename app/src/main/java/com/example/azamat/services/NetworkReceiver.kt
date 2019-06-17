@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import com.example.azamat.ui.preloader.PreloaderActivity.Companion.refreshDisplay
 
 class NetworkReceiver : BroadcastReceiver() {
 	
@@ -16,7 +15,7 @@ class NetworkReceiver : BroadcastReceiver() {
 		val connection =
 			context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 		val networkInfo = connection.activeNetworkInfo
-		refreshDisplay =
-			networkInfo.type == ConnectivityManager.TYPE_WIFI || networkInfo.type == ConnectivityManager.TYPE_MOBILE
+//		refreshDisplay =
+//			networkInfo.type == ConnectivityManager.TYPE_WIFI || networkInfo.type == ConnectivityManager.TYPE_MOBILE
 	}
 }

@@ -24,7 +24,6 @@
 			android:layout_height = "match_parent"
 			app:layout_constraintEnd_toEndOf = "parent"
 			tools:listitem = "@layout/main_item_list"
-			app:constraintSet = ""
 			app:layout_constraintStart_toStartOf = "parent"
 			app:layout_constraintTop_toTopOf = "parent"
 			/>
