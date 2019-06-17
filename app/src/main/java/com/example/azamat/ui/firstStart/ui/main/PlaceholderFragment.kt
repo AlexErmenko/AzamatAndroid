@@ -1,4 +1,4 @@
-package com.example.azamat.ui.onboarding.ui.main
+package com.example.azamat.ui.firstStart.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

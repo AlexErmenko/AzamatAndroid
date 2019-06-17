@@ -1,4 +1,4 @@
-package com.example.azamat.ui.mainList
+package com.example.azamat.model
 
 import android.graphics.drawable.Drawable
 

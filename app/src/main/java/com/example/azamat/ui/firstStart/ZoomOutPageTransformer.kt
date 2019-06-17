@@ -1,4 +1,4 @@
-package com.example.azamat.ui.onboarding
+package com.example.azamat.ui.firstStart
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager

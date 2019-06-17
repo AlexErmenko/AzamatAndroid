@@ -9,4 +9,5 @@ class MainInfoViewModel internal constructor(
 	
 	val data = repository.getInfo()
 	
+	
 }

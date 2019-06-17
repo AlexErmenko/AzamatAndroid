@@ -1,6 +1,5 @@
 package com.example.azamat.db.repository
 
-import androidx.lifecycle.LiveData
 import com.beust.klaxon.Klaxon
 import com.example.azamat.db.dao.DeviceInfoDao
 import com.example.azamat.db.entity.DeviceInfo
@@ -43,7 +42,7 @@ class DeviceInfoRepository constructor(private val infoDao: DeviceInfoDao) {
 		}.toSortedMap()
 	}
 	
-	fun getInfo(): LiveData<List<DeviceInfo>> = infoDao.getInfo()
+	fun getInfo(): DeviceInfo = infoDao.getInfo()
 	
 	
 	fun readInfo(str: String): DeviceInfo? = Klaxon().parse<DeviceInfo>(str)

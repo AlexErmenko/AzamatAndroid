@@ -1,6 +1,5 @@
 package com.example.azamat.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,7 +11,7 @@ import com.example.azamat.db.entity.DeviceInfo
 interface DeviceInfoDao {
 	
 	@Query("SELECT * FROM DeviceInfo")
-	fun getInfo(): LiveData<List<DeviceInfo>>
+	fun getInfo(): DeviceInfo
 	
 	@Query("DELETE FROM DeviceInfo")
 	fun removeAll()

@@ -1,4 +1,4 @@
-package com.example.azamat.ui.onboarding.ui.main
+package com.example.azamat.ui.firstStart.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

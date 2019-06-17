@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.azamat.R
-import com.example.azamat.db.AppDatabase
 
 class MainFragmentList : Fragment() {
 	
@@ -15,8 +14,11 @@ class MainFragmentList : Fragment() {
 		fun newInstance() = MainFragmentList()
 	}
 	
+	
 	private lateinit var viewModel: MainFragmentListViewModel
-	lateinit var db: AppDatabase
+//	lateinit var bind :
+	
+	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
@@ -26,12 +28,10 @@ class MainFragmentList : Fragment() {
 	
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
 		super.onActivityCreated(savedInstanceState)
-		
-		
-		
-		
 		viewModel = ViewModelProviders.of(this).get(MainFragmentListViewModel::class.java)
 		// TODO: Use the ViewModel
+		
+		
 	}
 	
 }

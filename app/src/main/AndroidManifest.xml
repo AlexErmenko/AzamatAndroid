@@ -27,7 +27,7 @@
 		>
 		
 		<activity
-			android:name = ".ui.onboarding.BenefitActivity"
+			android:name = ".ui.firstStart.BenefitActivity"
 			android:label = "@string/title_activity_benefit"
 			
 			>
