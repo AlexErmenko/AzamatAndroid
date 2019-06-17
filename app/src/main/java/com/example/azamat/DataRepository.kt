@@ -16,8 +16,8 @@ class DataRepository private constructor(private val db: AppDatabase) {
 		ObservableInfo.addSource(
 			db.infoDao().getInfo()
 		) { it: List<DeviceInfo>? ->
-			if (db.databaseCreated.value != null)
-				ObservableInfo.postValue(it)
+			//			if (db.databaseCreated.value != null)
+//				ObservableInfo.postValue(it)
 		}
 	}
 	

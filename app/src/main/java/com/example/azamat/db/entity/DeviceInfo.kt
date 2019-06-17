@@ -19,15 +19,15 @@ import com.beust.klaxon.Json
  */
 @Entity
 data class DeviceInfo(
+	@ColumnInfo(name = "ID")
+	@Json("id")
+	val id: Int,
 	
 	@PrimaryKey
 	@ColumnInfo(name = "DeviceID")
 	@Json(name = "device_id")
 	val deviceId: Int,
 	
-	@ColumnInfo(name = "ID")
-	@Json("id")
-	val id: Int,
 	
 	@ColumnInfo(name = "Ilum")
 	@Json(name = "illumination")

@@ -3,24 +3,9 @@
 	xmlns:android = "http://schemas.android.com/apk/res/android"
 	xmlns:app = "http://schemas.android.com/apk/res-auto"
 	xmlns:tools = "http://schemas.android.com/tools"
-	app:startDestination = "@id/benefitActivity"
+	app:startDestination = "@id/mainFragmentList"
 	>
-	<navigation
-		app:startDestination = "@id/placeholderFragment"
-		>
-		<fragment
-			android:id = "@+id/placeholderFragment"
-			android:name = "com.example.azamat.ui.onboarding.ui.main.PlaceholderFragment"
-			android:label = "fragment_benefit"
-			tools:layout = "@layout/fragment_benefit"
-			/>
-		<activity
-			android:id = "@+id/benefitActivity"
-			android:name = "com.example.azamat.ui.onboarding.BenefitActivity"
-			android:label = "activity_benefit"
-			tools:layout = "@layout/activity_benefit"
-			/>
-	</navigation>
+	
 	<fragment
 		android:id = "@+id/aboutDeveloperFragment"
 		android:name = "com.example.azamat.ui.about.AboutDeveloperFragment"
@@ -49,5 +34,11 @@
 		android:name = "com.example.azamat.ui.help.UserHelpFragment"
 		android:label = "user_help_fragment"
 		tools:layout = "@layout/user_help_fragment"
+		/>
+	<fragment
+		android:id = "@+id/mainFragmentList"
+		android:name = "com.example.azamat.ui.mainList.MainFragmentList"
+		android:label = "main_fragment_list_fragment"
+		tools:layout = "@layout/fragment_main_list"
 		/>
 </navigation>

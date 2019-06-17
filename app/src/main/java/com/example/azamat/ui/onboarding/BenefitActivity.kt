@@ -6,8 +6,6 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.azamat.R
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class BenefitActivity : AppCompatActivity() {
@@ -28,8 +26,6 @@ class BenefitActivity : AppCompatActivity() {
 			WindowManager.LayoutParams.FLAG_FULLSCREEN
 		)
 		setContentView(R.layout.activity_benefit)
-		val dotsIndicator = findViewById<DotsIndicator>(R.id.dots_indicator)
-		val springDotsIndicator = findViewById<SpringDotsIndicator>(R.id.spring_dots_indicator)
 		val wormDotsIndicator = findViewById<WormDotsIndicator>(R.id.worm_dots_indicator)
 		
 		val viewPager = findViewById<ViewPager>(R.id.view_pager)
@@ -37,8 +33,6 @@ class BenefitActivity : AppCompatActivity() {
 		viewPager.adapter = adapter
 		viewPager.setPageTransformer(true, ZoomOutPageTransformer())
 		
-		dotsIndicator.setViewPager(viewPager)
-		springDotsIndicator.setViewPager(viewPager)
 		wormDotsIndicator.setViewPager(viewPager)
 
 
@@ -49,5 +43,5 @@ class BenefitActivity : AppCompatActivity() {
 //		fab.setOnClickListener { view ->
 //			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //				.setAction("Action", null).show()
-		}
 	}
+}
