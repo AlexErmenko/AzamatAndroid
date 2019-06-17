@@ -17,7 +17,7 @@ class MainFragmentList : Fragment() {
 	
 	private lateinit var viewModel: MainFragmentListViewModel
 //	lateinit var bind :
-	
+	//TIDI
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
