@@ -54,8 +54,7 @@ class MainActivity : AppCompatActivity() {
 		}
 		
 		
-		
-		
+		//TODO: qweqwe
 		
 	}
 	
