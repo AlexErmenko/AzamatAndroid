@@ -38,7 +38,7 @@
 	<fragment
 		android:id = "@+id/mainFragmentList"
 		android:name = "com.example.azamat.ui.mainList.MainFragmentList"
-		android:label = "main_fragment_list_fragment"
+		android:label = "Головне вікно"
 		tools:layout = "@layout/fragment_main_list"
 		/>
 </navigation>

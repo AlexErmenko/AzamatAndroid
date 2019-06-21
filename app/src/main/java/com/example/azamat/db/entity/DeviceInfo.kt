@@ -38,13 +38,26 @@ data class DeviceInfo(
 	val temperature: Int,
 	
 	
-	@Json()
+	@Json("humidity")
 	@ColumnInfo()
 	val humidity: Int,
 	
-	@Json()
+	@Json("smoke")
 	@ColumnInfo()
 	val smoke: Int,
+	
+	@Json("bar")
+	@ColumnInfo(name = "barometr")
+	val barometr: Double,
+	
+	@Json("gas")
+	@ColumnInfo(name = "gas")
+	val gas: Int,
+	
+	
+	@Json("air_quality")
+	@ColumnInfo(name = "AirQual")
+	val airQual: Int,
 	
 	@Json(name = "created_at")
 	@ColumnInfo()

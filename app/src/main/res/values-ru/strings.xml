@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name = "app_name">Azamat</string>
+	<string name = "app_name">Амат</string>
+	
+	<string name = "ilum">Освещенность</string>
+	
+	<string name = "temperature">
+		Температура
+	</string>
+	
+	
+	<string name = "humidity">
+		Вологість
+		
+	</string>
+	
+	
+	<string name = "bar">
+		Бар
+	</string>
+	
+	
+	<string name = "gas">
+		Газ
+	</string>
+	
+	
+	<string name = "air_quality">Качество воздуха</string>
+	<string name = "menu_home">Главное окно</string>
+	<string name = "smoke">Задымлённость</string>
+	<string name = "action_settings">Настройки</string>
 </resources>

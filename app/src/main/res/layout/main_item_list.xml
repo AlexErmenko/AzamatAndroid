@@ -1,84 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<androidx.cardview.widget.CardView
 	xmlns:android = "http://schemas.android.com/apk/res/android"
 	xmlns:app = "http://schemas.android.com/apk/res-auto"
 	xmlns:tools = "http://schemas.android.com/tools"
+	android:id = "@+id/card_view"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:layout_margin = "10dp"
+	tools:layout_editor_absoluteY = "81dp"
 	>
 	
-	<data>
-		
-		<variable
-			name = "item"
-			type = "com.example.azamat.ui.mainList.MainFragmentListViewModel"
-			/>
-	</data>
-	
 	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id = "@+id/listItem"
-		android:name = "com.example.azamat.ui.main.ItemFragment"
 		android:layout_width = "match_parent"
-		android:layout_height = "wrap_content"
-		android:layout_margin = "10dp"
-		tools:layout_editor_absoluteY = "81dp"
+		android:layout_height = "match_parent"
 		>
 		
-		<androidx.cardview.widget.CardView
+		<!--<ImageView
+			android:id = "@+id/cardImg"
 			android:layout_width = "0dp"
 			android:layout_height = "wrap_content"
-			android:clickable = "true"
-			app:cardElevation = "4dp"
-			app:cardMaxElevation = "4dp"
-			app:cardUseCompatPadding = "true"
+			android:layout_marginStart = "16dp"
+			android:layout_marginTop = "8dp"
+			android:layout_marginBottom = "8dp"
+			android:src = "@android:drawable/btn_star_big_on"
+			app:layout_constraintBottom_toBottomOf = "parent"
+			app:layout_constraintStart_toStartOf = "parent"
+			app:layout_constraintTop_toTopOf = "parent"
+			tools:src = "@drawable/ic_flash_power_foreground"
+			/>-->
+		
+		<TextView
+			android:id = "@+id/cardText"
+			android:layout_width = "0dp"
+			android:layout_height = "wrap_content"
+			android:layout_marginStart = "24dp"
+			android:layout_marginTop = "24dp"
+			android:layout_marginBottom = "24dp"
+			android:text = "TextView"
 			app:layout_constraintBottom_toBottomOf = "parent"
 			app:layout_constraintEnd_toEndOf = "parent"
 			app:layout_constraintStart_toStartOf = "parent"
 			app:layout_constraintTop_toTopOf = "parent"
-			>
-			
-			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width = "match_parent"
-				android:layout_height = "match_parent"
-				>
-				
-				<ImageView
-					android:id = "@+id/imageView3"
-					android:layout_width = "0dp"
-					android:layout_height = "wrap_content"
-					android:layout_marginStart = "16dp"
-					android:layout_marginTop = "8dp"
-					android:layout_marginBottom = "8dp"
-					android:src = "@android:drawable/btn_star_big_on"
-					app:layout_constraintBottom_toBottomOf = "parent"
-					app:layout_constraintStart_toStartOf = "parent"
-					app:layout_constraintTop_toTopOf = "parent"
-					tools:src = "@drawable/ic_flash_power_foreground"
-					/>
-				
-				<TextView
-					android:id = "@+id/cardTitle"
-					android:layout_width = "0dp"
-					android:layout_height = "wrap_content"
-					android:layout_marginStart = "16dp"
-					android:layout_marginTop = "16dp"
-					android:layout_marginEnd = "16dp"
-					app:layout_constraintDimensionRatio = ""
-					app:layout_constraintEnd_toEndOf = "parent"
-					app:layout_constraintStart_toEndOf = "@+id/imageView3"
-					app:layout_constraintTop_toTopOf = "parent"
-					/>
-				
-				<TextView
-					android:id = "@+id/cardText"
-					android:layout_width = "0dp"
-					android:layout_height = "wrap_content"
-					android:layout_marginBottom = "24dp"
-					android:text = "TextView"
-					app:layout_constraintBottom_toBottomOf = "parent"
-					app:layout_constraintEnd_toEndOf = "@+id/cardTitle"
-					app:layout_constraintStart_toStartOf = "@+id/cardTitle"
-					/>
-			</androidx.constraintlayout.widget.ConstraintLayout>
-		
-		</androidx.cardview.widget.CardView>
+			/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
+</androidx.cardview.widget.CardView>

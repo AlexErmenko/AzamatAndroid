@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name = "app_name">Azamat</string>
+	<string name = "app_name">Амат</string>
+	<string name = "air_quality">Якість повітря</string>
+	<string name = "bar">Бар</string>
+	<string name = "gas">Газ</string>
+	<string name = "humidity">Вологість</string>
+	<string name = "ilum">Освітленість</string>
+	<string name = "smoke">Смог</string>
+	<string name = "menu_home">Головне вікно</string>
+	<string name = "temperature">Температура</string>
+	<string name = "action_settings">Налаштування</string>
+	<string name = "messages_header">Повідомлення</string>
+	<string name = "menu_tools">Інструменти</string>
+	<string name = "menu_slideshow">Слайдшоу</string>
+	<string name = "menu_send">Відправити</string>
+	<string name = "menu_gallery">Галерея</string>
 </resources>

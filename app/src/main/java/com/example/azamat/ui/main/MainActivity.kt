@@ -14,7 +14,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.azamat.R
 import com.example.azamat.databinding.ActivityMainBinding
-import com.example.azamat.db.repository.DeviceInfoRepository
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var navView: NavigationView
 	private lateinit var navController: NavController
 	
-	lateinit var rep: DeviceInfoRepository
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		
@@ -41,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 		setupActionBarWithNavController(navController, appBarConfiguration)
 		
 		binding.navigationView.setupWithNavController(navController)
-		//TODO: qweqwe
 		
 	}
 	

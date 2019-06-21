@@ -3,68 +3,59 @@
 <layout
 	xmlns:android = "http://schemas.android.com/apk/res/android"
 	xmlns:app = "http://schemas.android.com/apk/res-auto"
-	xmlns:tools = "http://schemas.android.com/tools"
 	>
 	
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id = "@+id/swipeLayout"
+	
+	<androidx.drawerlayout.widget.DrawerLayout
+		android:id = "@+id/drawer_layout"
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
-		tools:context = ".ui.main.MainActivity"
+		android:fitsSystemWindows = "true"
 		>
 		
-		
-		<androidx.drawerlayout.widget.DrawerLayout
-			android:id = "@+id/drawer_layout"
+		<LinearLayout
 			android:layout_width = "match_parent"
 			android:layout_height = "match_parent"
-			android:fitsSystemWindows = "true"
+			android:orientation = "vertical"
 			>
 			
-			<LinearLayout
+			<com.google.android.material.appbar.AppBarLayout
+				android:id = "@+id/appbar"
 				android:layout_width = "match_parent"
-				android:layout_height = "match_parent"
-				android:orientation = "vertical"
+				android:layout_height = "wrap_content"
+				android:theme = "@style/AppTheme.AppBarOverlay"
 				>
 				
-				<com.google.android.material.appbar.AppBarLayout
-					android:id = "@+id/appbar"
+				<androidx.appcompat.widget.Toolbar
+					android:id = "@+id/toolbar"
 					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:theme = "@style/AppTheme.AppBarOverlay"
-					>
-					
-					<androidx.appcompat.widget.Toolbar
-						android:id = "@+id/toolbar"
-						android:layout_width = "match_parent"
-						android:layout_height = "?attr/actionBarSize"
-						app:popupTheme = "@style/AppTheme.PopupOverlay"
-						/>
-				
-				</com.google.android.material.appbar.AppBarLayout>
-				
-				<fragment
-					android:id = "@+id/hostFragment"
-					android:name = "androidx.navigation.fragment.NavHostFragment"
-					android:layout_width = "match_parent"
-					android:layout_height = "match_parent"
-					app:defaultNavHost = "true"
-					app:navGraph = "@navigation/nav_graph"
+					android:layout_height = "?attr/actionBarSize"
+					app:popupTheme = "@style/AppTheme.PopupOverlay"
 					/>
-			</LinearLayout>
 			
-			<com.google.android.material.navigation.NavigationView
-				android:id = "@+id/navigation_view"
-				style = "@style/Widget.MaterialComponents.NavigationView"
-				android:layout_width = "wrap_content"
+			</com.google.android.material.appbar.AppBarLayout>
+			
+			<fragment
+				android:id = "@+id/hostFragment"
+				android:name = "androidx.navigation.fragment.NavHostFragment"
+				android:layout_width = "match_parent"
 				android:layout_height = "match_parent"
-				android:layout_gravity = "start"
-				app:headerLayout = "@layout/nav_header_slider"
-				app:menu = "@menu/activity_slider_drawer"
+				app:defaultNavHost = "true"
+				app:navGraph = "@navigation/nav_graph"
 				/>
+		</LinearLayout>
 		
-		</androidx.drawerlayout.widget.DrawerLayout>
+		<com.google.android.material.navigation.NavigationView
+			android:id = "@+id/navigation_view"
+			style = "@style/Widget.MaterialComponents.NavigationView"
+			android:layout_width = "wrap_content"
+			android:layout_height = "match_parent"
+			android:layout_gravity = "start"
+			app:headerLayout = "@layout/nav_header_slider"
+			app:menu = "@menu/activity_slider_drawer"
+			/>
 	
-	
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	</androidx.drawerlayout.widget.DrawerLayout>
+
+
 </layout>
